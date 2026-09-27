@@ -115,27 +115,46 @@ img, svg { max-width: 100%; }
   position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
   border: 1px dashed rgba(92,161,203,.52); border-radius: 50%;
 }
-.orbit-outer { width: 91%; height: 91%; animation: rotate 32s linear infinite; }
-.orbit-inner { width: 67%; height: 67%; border-color: rgba(65,134,180,.22); animation: rotate-reverse 24s linear infinite; }
+.orbit-outer { width: 91%; height: 91%; z-index: 1; animation: rotate 90s linear infinite; }
+.orbit-inner { width: 67%; height: 67%; z-index: 4; border-color: rgba(65,134,180,.22); animation: rotate-reverse 24s linear infinite; }
 @keyframes rotate { to { transform: translate(-50%,-50%) rotate(360deg); } }
 @keyframes rotate-reverse { to { transform: translate(-50%,-50%) rotate(-360deg); } }
-.avatar-wrap { position: absolute; width: 57%; left: 50%; top: 51%; transform: translate(-50%,-50%); z-index: 4; }
-.avatar-halo { position: absolute; inset: 14%; border-radius: 50%; background: rgba(56,217,255,.13); filter: blur(35px); }
-.avatar-card { position: relative; background: transparent; filter: drop-shadow(0 16px 20px rgba(0,0,0,.36)); }
-.avatar-photo { display: block; width: 100%; height: auto; object-fit: contain; }
-.orbit-tech {
-  position: absolute; width: 58px; height: 58px; border: 1px solid rgba(91,148,190,.45); border-radius: 50%;
-  display: grid; place-items: center; background: rgba(5,14,25,.9); box-shadow: 0 0 22px rgba(56,217,255,.08);
-  z-index: 5; transition: .25s ease;
+.orbit-track { position: absolute; inset: 0; z-index: 5; animation: orbit-track-spin 90s linear infinite; }
+@keyframes orbit-track-spin { to { transform: rotate(360deg); } }
+@keyframes orbit-tech-upright {
+  from { transform: translate(-50%,-50%) rotate(0); }
+  to { transform: translate(-50%,-50%) rotate(-360deg); }
 }
-.orbit-tech i, .orbit-tech .c-icon, .orbit-tech .plain-icon { font-size: 1.45rem; font-weight: 700; }
-.orbit-tech small { position: absolute; top: 62px; color: #b6c5d5; font-size: .58rem; white-space: nowrap; }
-.orbit-tech:hover { transform: scale(1.12); border-color: var(--cyan); box-shadow: 0 0 28px rgba(56,217,255,.2); z-index: 8; }
-.tech-python { left: 11%; top: 18%; color: #4fc3f7; } .tech-java { left: 45%; top: 1%; color: #ef4444; }
-.tech-js { right: 12%; top: 17%; color: #facc15; } .tech-node { right: 1%; top: 43%; color: #54d47d; }
-.tech-express { right: 13%; bottom: 16%; color: #d8e0ea; } .tech-postgres { right: 41%; bottom: 1%; color: #5ea7e8; }
-.tech-flask { left: 21%; bottom: 7%; color: #e9eef5; } .tech-git { left: 3%; bottom: 30%; color: #ff7043; }
-.tech-c { left: 1%; top: 43%; color: #5ca8ff; }
+.avatar-wrap {
+  position: absolute; width: 67%; aspect-ratio: 1; left: 50%; top: 50%; z-index: 3;
+  transform: translate(-50%,-50%); overflow: hidden; border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,217,255,.11), rgba(5,14,25,.18) 72%);
+}
+.avatar-halo { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(56,217,255,.12), transparent 72%); }
+.avatar-card { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+.avatar-photo { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center 24%; }
+.orbit-tech {
+  position: absolute; width: 102px; height: 102px; display: grid; place-items: center;
+  transform: translate(-50%,-50%); animation: orbit-tech-upright 90s linear infinite;
+}
+.orbit-tech-icon {
+  width: 102px; height: 102px; display: grid; place-items: center; border: 1px solid rgba(91,148,190,.58);
+  border-radius: 50%; background: rgba(5,14,25,.94); box-shadow: 0 0 24px rgba(56,217,255,.1);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.orbit-tech-icon i { font-size: 2.5rem; line-height: 1; }
+.orbit-tech small { position: absolute; top: calc(100% + 8px); color: #b6c5d5; font-size: .87rem; white-space: nowrap; }
+.orbit-tech:hover { z-index: 8; }
+.orbit-tech:hover .orbit-tech-icon { transform: scale(1.08); border-color: var(--cyan); box-shadow: 0 0 30px rgba(56,217,255,.23); }
+.tech-python { left: 19%; top: 19%; }
+.tech-java { left: 50%; top: 6%; }
+.tech-js { left: 81%; top: 19%; }
+.tech-node { left: 94%; top: 50%; }
+.tech-express { left: 81%; top: 81%; }
+.tech-postgres { left: 50%; top: 94%; }
+.tech-flask { left: 19%; top: 81%; }
+.tech-git { left: 6%; top: 50%; }
+.plain-icon { color: #e6edf5; font: 800 2.4rem/1 Inter, sans-serif; letter-spacing: -.1em; padding-right: .1em; }
 
 /* ABOUT */
 .about-panel, .panel { padding: 18px; }
@@ -322,12 +341,10 @@ img, svg { max-width: 100%; }
   .terminal { text-align:left; }
   .hero-visual { min-height:355px; }
   .orbit-scene { width:min(370px, 100%); }
-  .orbit-tech { width:44px; height:44px; }
-  .orbit-tech i, .orbit-tech .c-icon, .orbit-tech .plain-icon { font-size:1rem; }
-  .orbit-tech small { top:47px; font-size:.48rem; }
-  .tech-python { left:5%; top:19%; }.tech-java { left:45%; top:0; }.tech-js {right:5%;top:19%}
-  .tech-node {right:-2%;top:45%}.tech-express{right:7%;bottom:17%}.tech-postgres{right:40%;bottom:0}
-  .tech-flask{left:16%;bottom:5%}.tech-git{left:-1%;bottom:29%}.tech-c{left:-2%;top:45%}
+  .orbit-tech, .orbit-tech-icon { width:77px; height:77px; }
+  .orbit-tech-icon i { font-size:1.75rem; }
+  .plain-icon { font-size:1.7rem; }
+  .orbit-tech small { font-size:.72rem; }
   .about-panel, .panel { padding:14px; }
   .info-grid { grid-template-columns:1fr; }
   .stack-grid { grid-template-columns:1fr; }
