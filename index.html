@@ -204,108 +204,63 @@
       </div>
     </section>
 
-    <!-- PROJECT -->
-    <section id="project" class="section">
-      <div class="container panel reveal">
+    <!-- FEATURED PROJECTS -->
+    <section id="project" class="section featured-projects">
+      <div class="container reveal featured-projects-container">
         <div class="section-heading">
           <span class="section-icon yellow"><i class="fa-regular fa-folder-open"></i></span>
-          <h2>Featured Project</h2>
+          <h2>Featured Projects</h2>
         </div>
-
-        <div class="project-grid">
-          <div class="dashboard-preview">
-            <div class="traffic-scene">
-              <div class="city-glow"></div>
-              <div class="road road-a"></div>
-              <div class="road road-b"></div>
-              <div class="road-line"></div>
-              <div class="building b1"></div>
-              <div class="building b2"></div>
-              <div class="building b3"></div>
-              <div class="traffic-lights"><i></i><i></i><i></i></div>
-              <div class="car car1"></div>
-              <div class="car car2"></div>
-              <div class="car car3"></div>
-              <div class="scene-label"><span></span> LIVE TRAFFIC SIMULATION</div>
-            </div>
-
-            <div class="mini-dashboard">
-              <div class="mini-chart">
-                <small>Traffic Flow</small>
-                <svg viewBox="0 0 220 90" preserveAspectRatio="none">
-                  <polyline points="0,72 25,62 50,68 75,45 100,54 125,31 150,42 175,20 200,30 220,13" fill="none"
-                    stroke="currentColor" stroke-width="3" />
-                  <polyline points="0,90 0,72 25,62 50,68 75,45 100,54 125,31 150,42 175,20 200,30 220,13 220,90"
-                    fill="currentColor" opacity=".08" stroke="none" />
-                </svg>
-              </div>
-
-              <div class="heatmap">
-                <small>Demand Heatmap</small>
-                <div class="heat-grid">
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
+        <div class="project-carousel" aria-label="Featured projects carousel">
+          <div class="project-track" id="projectTrack" aria-label="Swipe horizontally to browse projects">
+            <article class="project-card is-active" data-project-slide aria-label="Project 1 of 4">
+              <a class="project-preview-card-link" href="trafficflow-ai.html" aria-label="Open the Traffic Prediction Using Machine Learning project page">
+                <div class="project-preview-image"><img src="assets/Traffic_Prediction.jpg" alt="TrafficFlow AI traffic prediction dashboard with a Bengaluru map and forecast charts" fetchpriority="high" /></div>
+                <div class="project-preview-copy">
+                  <h3>Traffic Prediction Using Machine Learning</h3>
+                  <p>Explore Bengaluru traffic predictions through six specialized machine-learning models, with clear commuter and analyst dashboards.</p>
+                  <span class="project-preview-button">Explore project <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                 </div>
-              </div>
+              </a>
+            </article>
 
-              <div class="density">
-                <small>Traffic Density</small>
-                <div class="progress-ring" style="--progress: 78%;">
-                  <div><strong>78%</strong><span>HIGH</span></div>
+            <article class="project-card" data-project-slide aria-label="Project 2 of 4">
+              <a class="project-preview-card-link" href="speech-to-text-studio.html" aria-label="Open the Speech to Text Studio project page">
+                <div class="project-preview-image"><img src="assets/AI_Summarization.jpg" alt="Speech to Text Studio interface with recording controls, an editable transcript, and AI summary" loading="lazy" decoding="async" /></div>
+                <div class="project-preview-copy">
+                  <h3>Speech to Text Studio</h3>
+                  <p>Record speech in the browser, edit the transcript, and turn it into an AI-generated summary, key points and action items.</p>
+                  <span class="project-preview-button">Explore project <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                 </div>
-              </div>
-            </div>
+              </a>
+            </article>
+
+            <article class="project-card" data-project-slide aria-label="Project 3 of 4">
+              <a class="project-preview-card-link" href="cinepeek.html" aria-label="Open the CinePeek project page">
+                <div class="project-preview-image"><img src="assets/CinePeek.jpg" alt="CinePeek movie and TV discovery dashboard with genre filters and a watchlist" loading="lazy" decoding="async" /></div>
+                <div class="project-preview-copy">
+                  <h3>CinePeek</h3>
+                  <p>Discover movies and shows by genre, language and media type, get a random pick, and save titles to a watchlist.</p>
+                  <span class="project-preview-button">Explore project <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+              </a>
+            </article>
+
+            <article class="project-card" data-project-slide aria-label="Project 4 of 4">
+              <a class="project-preview-card-link" href="puppetry.html" aria-label="Open the Puppetry project page">
+                <div class="project-preview-image"><img src="assets/Puppetry.jpg" alt="String Master Puppetry website featuring performances, tutorials, and a puppet-master dashboard" loading="lazy" decoding="async" /></div>
+                <div class="project-preview-copy">
+                  <h3>Puppetry</h3>
+                  <p>A responsive puppetry website bringing performances, shopping, tutorials and technology-enhanced projects together.</p>
+                  <span class="project-preview-button">Explore project <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+              </a>
+            </article>
           </div>
-
-          <div class="project-copy">
-            <h3>Traffic Flow Prediction System</h3>
-            <p class="project-lead">
-              A machine learning based system that predicts traffic patterns
-              using historical data and helps in making smarter transportation decisions.
-            </p>
-
-            <div class="project-fact">
-              <span class="fact-icon yellow"><i class="fa-regular fa-lightbulb"></i></span>
-              <div><b>Problem</b>
-                <p>Traffic congestion leads to time loss, fuel wastage and pollution.</p>
-              </div>
-            </div>
-
-            <div class="project-fact">
-              <span class="fact-icon blue"><i class="fa-solid fa-briefcase"></i></span>
-              <div><b>Approach</b>
-                <p>Collected traffic data, performed data analysis and trained ML models to predict traffic flow.</p>
-              </div>
-            </div>
-
-            <div class="project-fact">
-              <span class="fact-icon green"><i class="fa-solid fa-layer-group"></i></span>
-              <div><b>Tech Stack</b>
-                <div class="tag-list">
-                  <span>Python</span><span>Machine
-                    Learning</span><span>Pandas</span><span>Scikit-learn</span><span>Matplotlib</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="project-fact">
-              <span class="fact-icon red"><i class="fa-solid fa-chart-line"></i></span>
-              <div><b>Outcome</b>
-                <p>Predicted traffic flow with high accuracy and visualized results on an interactive dashboard.</p>
-              </div>
-            </div>
-
-            <a class="btn btn-primary project-btn" href="https://github.com/PrajwalShetty-114" target="_blank"
-              rel="noopener">
-              <i class="fa-brands fa-github"></i> View Project
-            </a>
-          </div>
+          <div class="project-carousel-footer"><div class="project-pagination" aria-hidden="true"><span class="is-active"></span><span></span><span></span><span></span></div></div>
         </div>
       </div>
     </section>
-
     <!-- JOURNEY -->
     <section id="journey" class="section">
       <div class="container panel reveal">
@@ -427,7 +382,8 @@
               <div class="days"><span>Mon</span><span>Wed</span><span>Fri</span></div>
               <div>
                 <div class="months">
-                  <span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span></div>
+                  <span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span>
+                </div>
                 <div class="contribution-grid" id="contributionGrid"></div>
               </div>
             </div>

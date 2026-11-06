@@ -50,6 +50,101 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
+  // Featured project carousel: highlight the centered card and update the position dots while swiping.
+  const projectTrack = document.getElementById("projectTrack");
+  if (projectTrack) {
+    const projectSlides = [...projectTrack.querySelectorAll("[data-project-slide]")];
+    const projectDots = [...document.querySelectorAll(".project-pagination span")];
+    let activeProjectIndex = 0;
+    let scrollFrame = 0;
+
+    function updateActiveProject() {
+      const trackBounds = projectTrack.getBoundingClientRect();
+      const trackCenter = trackBounds.left + trackBounds.width / 2;
+      let nearestIndex = 0;
+      let nearestDistance = Infinity;
+
+      projectSlides.forEach((slide, index) => {
+        const bounds = slide.getBoundingClientRect();
+        const distance = Math.abs(bounds.left + bounds.width / 2 - trackCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      if (nearestIndex !== activeProjectIndex && typeof navigator.vibrate === "function") {
+        navigator.vibrate(8);
+      }
+      activeProjectIndex = nearestIndex;
+      projectSlides.forEach((slide, index) => {
+        slide.classList.toggle("is-active", index === activeProjectIndex);
+      });
+      projectDots.forEach((dot, index) => {
+        dot.classList.toggle("is-active", index === activeProjectIndex);
+      });
+    }
+
+    projectTrack.addEventListener("scroll", () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        updateActiveProject();
+        scrollFrame = 0;
+      });
+    }, { passive: true });
+
+    let pointerStartX = 0;
+    let scrollStartX = 0;
+    let pointerIsDragging = false;
+    let pointerMoved = false;
+    let suppressProjectClick = false;
+
+    projectTrack.addEventListener("pointerdown", event => {
+      if (event.pointerType !== "mouse" || event.button !== 0 || event.target.closest("button")) return;
+      pointerIsDragging = true;
+      pointerMoved = false;
+      pointerStartX = event.clientX;
+      scrollStartX = projectTrack.scrollLeft;
+      projectTrack.classList.add("is-dragging");
+      const captureTarget = event.target.closest(".project-preview-card-link") || projectTrack;
+      captureTarget.setPointerCapture(event.pointerId);
+    });
+
+    projectTrack.addEventListener("pointermove", event => {
+      if (!pointerIsDragging) return;
+      const delta = event.clientX - pointerStartX;
+      if (Math.abs(delta) > 6) pointerMoved = true;
+      if (pointerMoved) {
+        projectTrack.scrollLeft = scrollStartX - delta;
+        event.preventDefault();
+      }
+    });
+
+    projectTrack.addEventListener("click", event => {
+      if (!suppressProjectClick) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      suppressProjectClick = false;
+    }, true);
+
+    function finishPointerDrag() {
+      if (pointerMoved) {
+        suppressProjectClick = true;
+        window.setTimeout(() => { suppressProjectClick = false; }, 450);
+      }
+      pointerIsDragging = false;
+      pointerMoved = false;
+      projectTrack.classList.remove("is-dragging");
+    }
+
+    projectTrack.addEventListener("pointerup", finishPointerDrag);
+    projectTrack.addEventListener("pointercancel", finishPointerDrag);
+    projectTrack.addEventListener("lostpointercapture", finishPointerDrag);
+
+    window.addEventListener("resize", updateActiveProject, { passive: true });
+    updateActiveProject();
+  }
+
   // Contribution calendar — deterministic mock data for a stable portfolio design.
   const grid = document.getElementById("contributionGrid");
   if (grid) {
