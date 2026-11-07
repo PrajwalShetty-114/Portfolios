@@ -30,8 +30,15 @@
         <div><span>PROJECT TYPE</span><b>Interactive website</b></div><div><span>CORE FOCUS</span><b>Performances · Shop · Tutorials</b></div><div><span>BUILT WITH</span><b>HTML5 · CSS · Vanilla JavaScript</b></div>
       </div>
     </header>
-    <figure class="detail-hero-visual">
-      <button class="detail-image-trigger" type="button" data-lightbox-trigger aria-label="Enlarge project screenshot"><img src="assets/Puppetry.jpg" alt="String Master Puppetry website featuring performances, tutorials, and a puppet-master dashboard" fetchpriority="high" /><span class="image-expand-hint"><i class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i> View full image</span></button>
+    <figure class="detail-hero-visual" data-project-carousel="puppetry">
+      <div class="detail-carousel-stage">
+        <img class="carousel-preview carousel-preview-previous" data-carousel-previous-preview alt="" aria-hidden="true" />
+        <button class="detail-image-trigger" type="button" data-lightbox-trigger aria-label="Enlarge project screenshot"><img src="assets/Puppetry.jpg" alt="String Master Puppetry website featuring performances, tutorials, and a puppet-master dashboard" fetchpriority="high" /><span class="image-expand-hint"><i class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i> View full image</span></button>
+        <img class="carousel-preview carousel-preview-next" data-carousel-next-preview alt="" aria-hidden="true" />
+      </div>
+      <div class="detail-carousel-controls" aria-label="Project screenshots">
+        <div class="carousel-pagination" data-carousel-pagination></div>
+      </div>
       <figcaption>String Master Puppetry · project interface</figcaption>
     </figure>
     <section class="detail-section" id="context">
@@ -41,7 +48,7 @@
     <section class="detail-section" id="process">
       <div class="detail-section-label"><span>02</span> PROCESS &amp; DEEP DIVE</div>
       <div class="detail-section-heading"><div><span class="detail-overline">THE BLUEPRINT</span><h2>How the pieces fit together</h2></div><p>The project’s main components and the path between them.</p></div>
-      <div class="detail-flow" aria-label="Project component flow"><div class="detail-flow-node"><span>01</span><b>Performances, shop &amp; tutorials</b></div><span class="detail-flow-arrow" aria-hidden="true">→</span><div class="detail-flow-node"><span>02</span><b>Vanilla JavaScript interactions</b></div><span class="detail-flow-arrow" aria-hidden="true">→</span><div class="detail-flow-node"><span>03</span><b>Browser localStorage</b></div><span class="detail-flow-arrow" aria-hidden="true">→</span><div class="detail-flow-node"><span>04</span><b>Persisted demo data</b></div></div>
+      <div class="detail-flow" aria-label="Project component flow"><div class="detail-flow-node"><span>01</span><i class="fa-solid fa-masks-theater" aria-hidden="true"></i><b>Performances, shop &amp; tutorials</b></div><span class="detail-flow-arrow" aria-hidden="true">→</span><div class="detail-flow-node"><span>02</span><i class="fa-solid fa-code" aria-hidden="true"></i><b>Vanilla JavaScript interactions</b></div><span class="detail-flow-arrow" aria-hidden="true">→</span><div class="detail-flow-node"><span>03</span><i class="fa-solid fa-database" aria-hidden="true"></i><b>Browser localStorage</b></div><span class="detail-flow-arrow" aria-hidden="true">→</span><div class="detail-flow-node"><span>04</span><i class="fa-solid fa-box-archive" aria-hidden="true"></i><b>Persisted demo data</b></div></div>
       <div class="detail-feature-heading"><span class="detail-overline">KEY FEATURES</span><h2>Designed around useful tasks</h2></div>
       <div class="detail-feature-grid"><article class="detail-feature"><span class="detail-feature-number">01</span><h3>Performances and bookings</h3><p>Browse show listings and use the site’s booking flow.</p></article><article class="detail-feature"><span class="detail-feature-number">02</span><h3>Shop, cart and wishlist</h3><p>Explore the shop and interact with cart and wishlist actions.</p></article><article class="detail-feature"><span class="detail-feature-number">03</span><h3>Tutorials and demo dashboard</h3><p>Visit tutorials and a puppet-master dashboard with demo data retained in the browser.</p></article></div>
       <article class="detail-challenge"><div><span class="detail-overline">TECHNICAL CHALLENGE</span><h2>Coordinate multiple responsive sections and interaction flows while keeping demo data after refresh without a server.</h2></div><div class="detail-approach"><span>APPROACH</span><p>The site uses HTML, CSS and vanilla JavaScript for its client-side experience, with localStorage to retain demo data in the browser.</p></div></article>
